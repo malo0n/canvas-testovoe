@@ -1,0 +1,95 @@
+.node {
+  width: 260px;
+  padding: var(--space-4);
+  border-radius: var(--radius-2);
+  background: var(--surface);
+  box-shadow: var(--shadow-1);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-size: 0.9375rem;
+}
+
+/* Выделение ставит класс на обёртку ноды, которую рисует React Flow. */
+:global(.react-flow__node.selected) .node {
+  border-color: var(--accent);
+  box-shadow: var(--focus);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.kind {
+  font-size: 0.75rem;
+  font-weight: 550;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Поле ноды — тот же элемент управления, что и остальные: рамка, фон и
+   состояние фокуса берутся из общего правила. */
+.textarea {
+  composes: control from '../../ui/ui.module.css';
+  min-height: 108px;
+  padding: var(--space-3);
+  resize: vertical;
+}
+
+.counter {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.problem {
+  font-size: 0.875rem;
+  color: var(--warning);
+}
+
+.failure {
+  composes: error from '../../ui/ui.module.css';
+}
+
+.waiting {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.preview {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-1);
+  background: var(--surface-muted);
+}
+
+.placeholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-1);
+  border: 1px dashed var(--border);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  text-align: center;
+  padding: var(--space-3);
+}
+
+.port {
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--surface);
+  background: var(--accent);
+}

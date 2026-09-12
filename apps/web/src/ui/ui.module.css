@@ -1,0 +1,265 @@
+/* Оформление общих элементов интерфейса. Кнопки, поля, карточки и сообщения
+   описаны один раз и используются всеми страницами. */
+
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 50px;
+  padding: 0 var(--space-4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-1);
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-weight: 550;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.primary {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.primary:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--accent) 86%, black);
+}
+
+.secondary {
+  border-color: var(--border-strong);
+  background: var(--surface);
+}
+
+.secondary:hover:not(:disabled) {
+  background: var(--surface-muted);
+  border-color: var(--text-muted);
+}
+
+.ghost {
+  color: var(--text-muted);
+  padding: 0 var(--space-2);
+  min-height: 40px;
+  font-weight: 500;
+}
+
+.ghost:hover:not(:disabled) {
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.danger {
+  color: var(--danger);
+  padding: 0 var(--space-2);
+  min-height: 40px;
+  font-weight: 500;
+}
+
+.danger:hover:not(:disabled) {
+  background: var(--danger-soft);
+}
+
+.block {
+  width: 100%;
+}
+
+/* Ожидание не меняет размер кнопки: подпись гаснет, спиннер ложится поверх. */
+.labelBusy {
+  opacity: 0.25;
+}
+
+.busy {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.label {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: -0.005em;
+}
+
+.optional {
+  color: color-mix(in srgb, var(--text-muted) 70%, transparent);
+}
+
+.control {
+  min-height: 52px;
+  width: 100%;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-1);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.control::placeholder {
+  color: color-mix(in srgb, var(--text-muted) 60%, transparent);
+}
+
+.control:hover:not(:focus) {
+  border-color: var(--text-muted);
+}
+
+.control:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: var(--focus);
+}
+
+.control[aria-invalid='true'] {
+  border-color: var(--danger);
+}
+
+.hint {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.error {
+  font-size: 0.875rem;
+  color: var(--danger);
+}
+
+.alert {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-4);
+  border-radius: var(--radius-2);
+  font-size: 0.96875rem;
+}
+
+.alert strong {
+  font-weight: 550;
+  letter-spacing: -0.015em;
+}
+
+.alertActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.toneError {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.toneInfo {
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+.toneSuccess {
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.toneWarning {
+  background: var(--warning-soft);
+  color: var(--warning);
+}
+
+.requestId {
+  font-size: 0.8125rem;
+  opacity: 0.7;
+  word-break: break-all;
+}
+
+.spinner {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 1.5px solid currentcolor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 800ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-7) var(--space-4);
+  justify-content: center;
+  color: var(--text-muted);
+}
+
+/* Карточка отделяется светом и радиусом, а не обводкой. */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius-3);
+  box-shadow: var(--shadow-1);
+}
+
+.stale {
+  opacity: 0.5;
+  transition: opacity 200ms ease;
+}
+
+.dialog {
+  width: min(480px, calc(100vw - 2 * var(--space-4)));
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-3);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-2);
+}
+
+.dialog::backdrop {
+  background: rgb(28 24 15 / 32%);
+  backdrop-filter: blur(3px);
+}
+
+.dialogHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-5) var(--space-3);
+}
+
+.dialogBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: 0 var(--space-5) var(--space-5);
+}

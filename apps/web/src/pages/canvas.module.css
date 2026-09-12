@@ -1,0 +1,123 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  min-height: 0;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface);
+  box-shadow: var(--shadow-1);
+  z-index: 4;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin-right: auto;
+}
+
+.name {
+  font-size: 1.125rem;
+  font-weight: 550;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.back {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.back:hover {
+  color: var(--accent);
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.groupLabel {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+/* Тот же элемент управления, что поля ввода: отличается только высотой. */
+.select {
+  composes: control from '../ui/ui.module.css';
+  min-height: 40px;
+  padding: 0 var(--space-3);
+  font-size: 0.9375rem;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px var(--space-3);
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition:
+    background-color 220ms ease,
+    color 220ms ease;
+}
+
+.neutral {
+  background: var(--surface-muted);
+  color: var(--text-muted);
+}
+
+.progress {
+  composes: toneInfo from '../ui/ui.module.css';
+}
+
+.ok {
+  composes: toneSuccess from '../ui/ui.module.css';
+}
+
+.warn {
+  composes: toneWarning from '../ui/ui.module.css';
+}
+
+.error {
+  composes: toneError from '../ui/ui.module.css';
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentcolor;
+}
+
+.notices {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4) 0;
+}
+
+.canvas {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+.hint {
+  padding: var(--space-2) var(--space-4) var(--space-3);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
